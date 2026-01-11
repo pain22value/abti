@@ -5,24 +5,21 @@ export default function Header() {
     <header className="relative z-20 w-full bg-white/80 backdrop-blur-sm">
       <div className="max-w-screen-3xl mx-auto px-24 py-4">
         <div className="flex items-center justify-between">
-          {/* 로고 */}
           <Link href="/" className="text-2xl font-bold text-gray-900 cursor-pointer hover:opacity-80 transition-opacity">
             AIGO
           </Link>
 
-          {/* 네비게이션 */}
           <nav className="flex items-center gap-8">
-            <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors">
+            <Link href="/recommend" className="text-gray-700 hover:text-gray-900 transition-colors">
               AI 조합 추천
-            </a>
-            <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors">
+            </Link>
+            <Link href="/compare" className="text-gray-700 hover:text-gray-900 transition-colors">
               AI 비교
-            </a>
-            <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors">
+            </Link>
+            <Link href="/usecases" className="text-gray-700 hover:text-gray-900 transition-colors">
               유스케이스
-            </a>
+            </Link>
             
-            {/* 프로필 */}
             <div className="flex items-center gap-2 cursor-pointer">
               <div className="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center text-white text-sm font-semibold">
                 D
