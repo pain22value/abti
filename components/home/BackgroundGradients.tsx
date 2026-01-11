@@ -2,7 +2,7 @@ export default function BackgroundGradients() {
   return (
     <>
       {/* 왼쪽 위 그라디언트 - 피그마 원본 */}
-      <div className="absolute top-[10%] left-[18%] pointer-events-none">
+      <div className="absolute top-[10%] left-[22%] pointer-events-none">
         <svg width="596" height="525" viewBox="0 0 596 525" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g opacity="0.3" filter="url(#filter0_f_204_947)">
             <rect width="258.917" height="243.529" transform="translate(306.651 404.711) rotate(-136.128)" fill="url(#paint0_linear_204_947)"/>
@@ -23,7 +23,7 @@ export default function BackgroundGradients() {
       </div>
 
       {/* 오른쪽 아래 그라디언트 - 피그마 원본 */}
-      <div className="absolute bottom-[17%] right-[23%] pointer-events-none">
+      <div className="absolute bottom-[23%] right-[26%] pointer-events-none">
         <svg width="510" height="400" viewBox="0 0 510 498" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g opacity="0.25" filter="url(#filter0_f_204_962)">
             <rect width="307.282" height="297.558" transform="translate(409.671 397.548) rotate(179.538)" fill="url(#paint0_linear_204_962)"/>

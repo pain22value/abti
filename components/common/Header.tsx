@@ -1,12 +1,14 @@
+import Link from 'next/link';
+
 export default function Header() {
   return (
     <header className="relative z-20 w-full bg-white/80 backdrop-blur-sm">
       <div className="max-w-screen-3xl mx-auto px-24 py-4">
         <div className="flex items-center justify-between">
           {/* 로고 */}
-          <div className="text-2xl font-bold text-gray-900">
+          <Link href="/" className="text-2xl font-bold text-gray-900 cursor-pointer hover:opacity-80 transition-opacity">
             AIGO
-          </div>
+          </Link>
 
           {/* 네비게이션 */}
           <nav className="flex items-center gap-8">
