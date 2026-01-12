@@ -93,7 +93,7 @@ export default function UseCasesPage() {
               placeholder="원하는 조합의 목적이나 상황을 검색해보세요"
               className="w-full px-4 py-3 pr-12 border border-line-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-main-600"
             />
-            <button className="absolute right-3 top-1/2 -translate-y-1/2 p-2 bg-main-600 text-white rounded-lg hover:opacity-90">
+            <button className="absolute right-3 top-1/2 -translate-y-1/2 p-2 bg-[#467EFF] text-white rounded-lg hover:opacity-90">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
@@ -107,8 +107,8 @@ export default function UseCasesPage() {
                 key={index}
                 className={`px-4 py-2 rounded-full text-sm transition-colors ${
                   index === 0
-                    ? 'bg-main-600 text-white'
-                    : 'bg-box-10 text-subtext-300 hover:bg-line-100'
+                    ? 'bg-[#467EFF] text-[#FFFFFF]'
+                    : 'bg-[#F3F4F6] text-[#364153] hover:bg-line-100'
                 }`}
               >
                 {category}
@@ -147,12 +147,12 @@ export default function UseCasesPage() {
 
                 {/* 추천 AI 조합 */}
                 <div className="mb-4">
-                  <p className="text-xs text-subtext-300 mb-2">추천 AI 조합</p>
+                  <p className="text-xs text-subtext-300 mb-2">사용 AI:</p>
                   <div className="flex gap-2">
                     {useCase.aiCombination.map((ai, idx) => (
                       <span
                         key={idx}
-                        className="px-3 py-1 bg-purple-50 text-main-600 text-xs rounded-full font-medium"
+                        className="px-3 py-1 bg-purple-50 text-[#8200DB] text-xs rounded-full font-medium"
                       >
                         {ai}
                       </span>
@@ -163,14 +163,14 @@ export default function UseCasesPage() {
                 {/* 프롬프트 예시 */}
                 <div className="mb-4">
                   <p className="text-xs text-subtext-300 mb-1">프롬프트 예시</p>
-                  <p className="text-sm text-text-900 italic">
+                  <p className="text-sm text-[#1E2939]">
                     {useCase.promptExample}
                   </p>
                 </div>
 
                 {/* 버튼 */}
-                <button className="w-full py-3 bg-main-600 text-white rounded-lg font-medium hover:opacity-90 transition-opacity">
-                  바로 조합으로 이동하기
+                <button className="w-full py-3 bg-[#2B7FFF] text-white rounded-lg hover:opacity-90 transition-opacity">
+                  이 프롬프트로 비교하기
                 </button>
               </div>
             ))}
