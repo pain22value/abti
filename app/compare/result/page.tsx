@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Header from "@/components/common/Header";
+import Footer from "@/components/common/Footer";
 
 const results: Record<string, string> = {
   ChatGPT: `신제품 런칭 SNS 마케팅 캠페인 아이디어
@@ -74,73 +76,36 @@ export default function CompareResultPage() {
   const [reason, setReason] = useState("");
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white flex justify-center">
-      <div className="w-full max-w-6xl px-6 py-12 space-y-8">
-        {/* 제목 */}
-        <div className="space-y-2">
-          <h1 className="text-2xl font-bold">비교 결과</h1>
-          <p className="text-gray-600 dark:text-gray-400">같은 조건에서 결과를 비교해보세요.</p>
-        </div>
-
-        {/* 프롬프트 요약 */}
-        <div className="bg-yellow-50 dark:bg-yellow-950/40 border border-yellow-200 dark:border-yellow-800 rounded-xl p-5 space-y-1">
-          <p className="text-yellow-800 dark:text-yellow-300 font-semibold">
-            프롬프트: 신제품 런칭을 위한 SNS 마케팅 캠페인 아이디어를 제시해주세요
-          </p>
-          <p className="text-sm text-yellow-700 dark:text-yellow-200">
-            언어: 한국어 · 사용 플랜: 유료 기본 · 포맷: general
-          </p>
-        </div>
-
-        {/* 탭 */}
-        <div className="flex gap-3">
-          {["ChatGPT", "Claude", "Gemini"].map((ai, idx) => (
-            <button
-              key={ai}
-              onClick={() => setActiveTab(ai)}
-              className={`px-4 py-2 rounded-lg border flex items-center gap-2 ${
-                activeTab === ai
-                  ? "bg-indigo-600 border-indigo-500 text-white"
-                  : "border-gray-200 dark:border-neutral-700 hover:bg-gray-100 dark:hover:bg-neutral-800"
-              }`}
-            >
-              {getIcon(ai)}
-              {ai}
-            </button>
-          ))}
-        </div>
-
-        {/* 결과 카드 */}
-        <section className="bg-gray-50 dark:bg-neutral-900 border border-gray-200 dark:border-neutral-800 rounded-xl p-6 space-y-4 overflow-y-auto max-h-[420px]">
-          <h2 className="font-semibold text-lg">{activeTab} 결과</h2>
-
-          <div className="text-sm leading-relaxed text-gray-800 dark:text-gray-200 whitespace-pre-line">
-            {results[activeTab]}
+    <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white flex flex-col">
+      <Header />
+      
+      <main className="flex-1 flex justify-center">
+        <div className="w-full max-w-6xl px-6 py-12 space-y-8">
+          {/* 제목 */}
+          <div className="space-y-2">
+            <h1 className="text-2xl font-bold">비교 결과</h1>
+            <p className="text-gray-600 dark:text-gray-400">같은 조건에서 결과를 비교해보세요.</p>
           </div>
-        </section>
 
-        {/* 응답 시간 */}
-        <div className="bg-gray-50 dark:bg-neutral-900 border border-gray-200 dark:border-neutral-800 rounded-xl p-5">
-          <h3 className="font-semibold mb-3">응답 시간 비교</h3>
-          <ul className="text-sm text-gray-700 dark:text-gray-300 space-y-1">
-            <li>① ChatGPT — 1.83초</li>
-            <li>② Claude — 2.48초</li>
-            <li>③ Gemini — 4.76초</li>
-          </ul>
-        </div>
+          {/* 프롬프트 요약 */}
+          <div className="bg-yellow-50 dark:bg-yellow-950/40 border border-yellow-200 dark:border-yellow-800 rounded-xl p-5 space-y-1">
+            <p className="text-yellow-800 dark:text-yellow-300 font-semibold">
+              프롬프트: 신제품 런칭을 위한 SNS 마케팅 캠페인 아이디어를 제시해주세요
+            </p>
+            <p className="text-sm text-yellow-700 dark:text-yellow-200">
+              언어: 한국어 · 사용 플랜: 유료 기본 · 포맷: general
+            </p>
+          </div>
 
-        {/* 비교 평가 */}
-        <section className="bg-gray-50 dark:bg-neutral-900 border border-gray-200 dark:border-neutral-800 rounded-xl p-6 space-y-4">
-          <h3 className="font-semibold text-lg">비교 평가</h3>
-
+          {/* 탭 */}
           <div className="flex gap-3">
-            {["ChatGPT", "Claude", "Gemini"].map((ai) => (
+            {["ChatGPT", "Claude", "Gemini"].map((ai, idx) => (
               <button
                 key={ai}
-                onClick={() => setSelectedEval(ai)}
-                className={`px-4 py-2 border rounded-lg flex items-center gap-2 transition ${
-                  selectedEval === ai
-                    ? "bg-indigo-600 border-indigo-600 text-white"
+                onClick={() => setActiveTab(ai)}
+                className={`px-4 py-2 rounded-lg border flex items-center gap-2 ${
+                  activeTab === ai
+                    ? "bg-indigo-600 border-indigo-500 text-white"
                     : "border-gray-200 dark:border-neutral-700 hover:bg-gray-100 dark:hover:bg-neutral-800"
                 }`}
               >
@@ -150,21 +115,64 @@ export default function CompareResultPage() {
             ))}
           </div>
 
-          <textarea
-            value={reason}
-            onChange={(e) => setReason(e.target.value)}
-            placeholder="가장 마음에 드는 답변을 선택하고 이유를 작성하세요."
-            className="w-full min-h-[120px] bg-white dark:bg-neutral-800 border border-gray-300 dark:border-neutral-700 rounded-lg px-4 py-3 resize-none"
-          />
+          {/* 결과 카드 */}
+          <section className="bg-gray-50 dark:bg-neutral-900 border border-gray-200 dark:border-neutral-800 rounded-xl p-6 space-y-4 overflow-y-auto max-h-[420px]">
+            <h2 className="font-semibold text-lg">{activeTab} 결과</h2>
 
-          <button
-            onClick={() => alert("평가가 제출되었습니다.")}
-            className="bg-indigo-600 hover:bg-indigo-500 px-6 py-2 rounded-lg font-semibold self-end text-white"
-          >
-            제출하기
-          </button>
-        </section>
-      </div>
+            <div className="text-sm leading-relaxed text-gray-800 dark:text-gray-200 whitespace-pre-line">
+              {results[activeTab]}
+            </div>
+          </section>
+
+          {/* 응답 시간 */}
+          <div className="bg-gray-50 dark:bg-neutral-900 border border-gray-200 dark:border-neutral-800 rounded-xl p-5">
+            <h3 className="font-semibold mb-3">응답 시간 비교</h3>
+            <ul className="text-sm text-gray-700 dark:text-gray-300 space-y-1">
+              <li>① ChatGPT — 1.83초</li>
+              <li>② Claude — 2.48초</li>
+              <li>③ Gemini — 4.76초</li>
+            </ul>
+          </div>
+
+          {/* 비교 평가 */}
+          <section className="bg-gray-50 dark:bg-neutral-900 border border-gray-200 dark:border-neutral-800 rounded-xl p-6 space-y-4">
+            <h3 className="font-semibold text-lg">비교 평가</h3>
+
+            <div className="flex gap-3">
+              {["ChatGPT", "Claude", "Gemini"].map((ai) => (
+                <button
+                  key={ai}
+                  onClick={() => setSelectedEval(ai)}
+                  className={`px-4 py-2 border rounded-lg flex items-center gap-2 transition ${
+                    selectedEval === ai
+                      ? "bg-indigo-600 border-indigo-600 text-white"
+                      : "border-gray-200 dark:border-neutral-700 hover:bg-gray-100 dark:hover:bg-neutral-800"
+                  }`}
+                >
+                  {getIcon(ai)}
+                  {ai}
+                </button>
+              ))}
+            </div>
+
+            <textarea
+              value={reason}
+              onChange={(e) => setReason(e.target.value)}
+              placeholder="가장 마음에 드는 답변을 선택하고 이유를 작성하세요."
+              className="w-full min-h-[120px] bg-white dark:bg-neutral-800 border border-gray-300 dark:border-neutral-700 rounded-lg px-4 py-3 resize-none"
+            />
+
+            <button
+              onClick={() => alert("평가가 제출되었습니다.")}
+              className="bg-indigo-600 hover:bg-indigo-500 px-6 py-2 rounded-lg font-semibold self-end text-white"
+            >
+              제출하기
+            </button>
+          </section>
+        </div>
+      </main>
+
+      <Footer />
     </div>
   );
 }
