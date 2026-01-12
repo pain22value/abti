@@ -153,9 +153,9 @@ export default function UseCasesPage() {
               placeholder="원하는 조합의 목적이나 상황을 검색해보세요"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full px-4 py-3 pr-12 border border-line-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#467EFF]"
+              className="w-full px-4 py-3 pr-12 border border-line-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-main-600"
             />
-            <button className="absolute right-3 top-1/2 -translate-y-1/2 p-2 bg-[#467EFF] text-white rounded-lg hover:opacity-90">
+            <button className="absolute right-3 top-1/2 -translate-y-1/2 p-2 bg-main-600 text-white rounded-lg hover:opacity-90">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
@@ -170,7 +170,7 @@ export default function UseCasesPage() {
                 onClick={() => handleCategoryClick(category)}
                 className={`px-4 py-2 rounded-full text-sm transition-colors ${
                   selectedCategories.includes(category)
-                    ? 'bg-[#467EFF] text-[#FFFFFF]'
+                    ? 'bg-main-600 text-[#FFFFFF]'
                     : 'bg-[#F3F4F6] text-[#364153] hover:bg-line-100'
                 }`}
               >
@@ -240,9 +240,9 @@ export default function UseCasesPage() {
                   </div>
 
                   {/* 버튼 - mt-auto로 하단 고정 */}
-                  <button className="w-full py-3 bg-[#2B7FFF] text-white rounded-lg hover:opacity-90 transition-opacity mt-auto flex items-center justify-center gap-2 cursor-pointer">
-                    <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M1.33496 8.66824C1.2088 8.66867 1.08511 8.6333 0.978258 8.56623C0.871406 8.49916 0.785778 8.40314 0.731322 8.28935C0.676866 8.17555 0.655818 8.04863 0.670622 7.92335C0.685426 7.79806 0.735476 7.67955 0.814956 7.58157L7.41496 0.781574C7.46446 0.724428 7.53193 0.685811 7.60628 0.672062C7.68063 0.658313 7.75744 0.670248 7.82411 0.70591C7.89078 0.741571 7.94335 0.798838 7.97318 0.868312C8.00301 0.937786 8.00834 1.01534 7.98829 1.08824L6.70829 5.10157C6.67055 5.20259 6.65787 5.31125 6.67135 5.41825C6.68483 5.52524 6.72406 5.62736 6.78568 5.71586C6.8473 5.80436 6.92947 5.87658 7.02514 5.92635C7.12081 5.97611 7.22712 6.00192 7.33496 6.00157H12.0016C12.1278 6.00114 12.2515 6.03652 12.3583 6.10359C12.4652 6.17066 12.5508 6.26667 12.6053 6.38047C12.6597 6.49427 12.6808 6.62118 12.666 6.74647C12.6512 6.87175 12.6011 6.99027 12.5216 7.08824L5.92162 13.8882C5.87211 13.9454 5.80465 13.984 5.7303 13.9978C5.65595 14.0115 5.57914 13.9996 5.51247 13.9639C5.4458 13.9282 5.39323 13.871 5.3634 13.8015C5.33357 13.732 5.32824 13.6545 5.34829 13.5816L6.62829 9.56824C6.66603 9.46723 6.67871 9.35856 6.66523 9.25157C6.65175 9.14458 6.61252 9.04245 6.5509 8.95396C6.48928 8.86546 6.40711 8.79323 6.31144 8.74347C6.21577 8.6937 6.10946 8.66789 6.00162 8.66824H1.33496Z" stroke="white" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
+                  <button className="w-full py-3 bg-[#4E47FF]/10 text-[#5736F5] rounded-lg hover:opacity-90 transition-opacity mt-auto flex items-center justify-center gap-2 cursor-pointer">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M2.66699 9.33328C2.54083 9.33371 2.41714 9.29834 2.31029 9.23127C2.20344 9.1642 2.11781 9.06818 2.06335 8.95438C2.0089 8.84059 1.98785 8.71367 2.00265 8.58839C2.01746 8.4631 2.06751 8.34459 2.14699 8.24661L8.74699 1.44661C8.7965 1.38947 8.86396 1.35085 8.93831 1.3371C9.01266 1.32335 9.08947 1.33529 9.15614 1.37095C9.22281 1.40661 9.27538 1.46388 9.30521 1.53335C9.33504 1.60283 9.34037 1.68038 9.32032 1.75328L8.04032 5.76661C8.00258 5.86763 7.9899 5.97629 8.00338 6.08328C8.01686 6.19028 8.05609 6.2924 8.11771 6.3809C8.17933 6.46939 8.2615 6.54162 8.35717 6.59139C8.45284 6.64115 8.55915 6.66696 8.66699 6.66661H13.3337C13.4598 6.66618 13.5835 6.70156 13.6904 6.76863C13.7972 6.8357 13.8828 6.93171 13.9373 7.04551C13.9917 7.15931 14.0128 7.28622 13.998 7.41151C13.9832 7.53679 13.9331 7.65531 13.8537 7.75328L7.25365 14.5533C7.20415 14.6104 7.13668 14.649 7.06233 14.6628C6.98798 14.6765 6.91117 14.6646 6.8445 14.6289C6.77783 14.5933 6.72526 14.536 6.69543 14.4665C6.6656 14.3971 6.66027 14.3195 6.68032 14.2466L7.96032 10.2333C7.99806 10.1323 8.01074 10.0236 7.99726 9.91661C7.98378 9.80962 7.94455 9.70749 7.88293 9.619C7.82131 9.5305 7.73914 9.45827 7.64347 9.40851C7.5478 9.35874 7.44149 9.33293 7.33365 9.33328H2.66699Z" stroke="#5736F5" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                     이 프롬프트로 비교하기
                   </button>
