@@ -1,7 +1,15 @@
+'use client';
+
+import { useState } from 'react';
 import Header from '@/components/common/Header';
 import Footer from '@/components/common/Footer';
 
 export default function UseCasesPage() {
+  // 선택된 카테고리 상태 관리
+  const [selectedCategories, setSelectedCategories] = useState<string[]>(['전체']);
+  // 검색어 상태 관리
+  const [searchQuery, setSearchQuery] = useState('');
+
   // 유스케이스 데이터
   const useCases = [
     {
@@ -72,6 +80,44 @@ export default function UseCasesPage() {
 
   const categories = ['전체', '마케터', '디자이너', '개발자', 'PM', '콘텐츠 크리에이터', 'CS 매니저', '데이터 애널리스트', 'SNS 매니저'];
 
+  // 카테고리 클릭 핸들러
+  const handleCategoryClick = (category: string) => {
+    if (category === '전체') {
+      setSelectedCategories(['전체']);
+    } else {
+      setSelectedCategories((prev) => {
+        // 전체 제거
+        const withoutAll = prev.filter(c => c !== '전체');
+        
+        // 이미 선택된 카테고리면 제거
+        if (withoutAll.includes(category)) {
+          const newCategories = withoutAll.filter(c => c !== category);
+          // 아무것도 선택 안 되면 전체로
+          return newCategories.length === 0 ? ['전체'] : newCategories;
+        }
+        
+        // 새로 추가
+        return [...withoutAll, category];
+      });
+    }
+  };
+
+  // 필터링된 유스케이스 (카테고리 + 검색어)
+  const filteredUseCases = useCases.filter(useCase => {
+    // 카테고리 필터
+    const matchesCategory = selectedCategories.includes('전체') || 
+      useCase.category.some(cat => selectedCategories.includes(cat));
+    
+    // 검색어 필터
+    const matchesSearch = searchQuery === '' || 
+      useCase.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      useCase.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      useCase.promptExample.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      useCase.aiCombination.some(ai => ai.toLowerCase().includes(searchQuery.toLowerCase()));
+    
+    return matchesCategory && matchesSearch;
+  });
+
   return (
     <main className="min-h-screen bg-white flex flex-col">
       <Header />
@@ -91,7 +137,9 @@ export default function UseCasesPage() {
             <input
               type="text"
               placeholder="원하는 조합의 목적이나 상황을 검색해보세요"
-              className="w-full px-4 py-3 pr-12 border border-line-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-main-600"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full px-4 py-3 pr-12 border border-line-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#467EFF]"
             />
             <button className="absolute right-3 top-1/2 -translate-y-1/2 p-2 bg-[#467EFF] text-white rounded-lg hover:opacity-90">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -102,11 +150,12 @@ export default function UseCasesPage() {
 
           {/* 카테고리 필터 */}
           <div className="flex gap-2 mb-10 flex-wrap">
-            {categories.map((category, index) => (
+            {categories.map((category) => (
               <button
-                key={index}
+                key={category}
+                onClick={() => handleCategoryClick(category)}
                 className={`px-4 py-2 rounded-full text-sm transition-colors ${
-                  index === 0
+                  selectedCategories.includes(category)
                     ? 'bg-[#467EFF] text-[#FFFFFF]'
                     : 'bg-[#F3F4F6] text-[#364153] hover:bg-line-100'
                 }`}
@@ -116,65 +165,83 @@ export default function UseCasesPage() {
             ))}
           </div>
 
+          {/* 검색 결과 개수 표시 */}
+          {searchQuery && (
+            <p className="text-sm text-subtext-300 mb-4">
+              "<span className="font-semibold text-text-900">{searchQuery}</span>" 검색 결과: {filteredUseCases.length}개
+            </p>
+          )}
+
           {/* 유스케이스 카드 그리드 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {useCases.map((useCase) => (
-              <div
-                key={useCase.id}
-                className="border border-line-100 rounded-xl p-6 hover:shadow-lg transition-shadow"
-              >
-                {/* 카테고리 태그 */}
-                <div className="flex gap-2 mb-3">
-                  {useCase.category.map((cat, idx) => (
-                    <span
-                      key={idx}
-                      className="px-3 py-1 bg-box-10 text-subtext-300 text-xs rounded-full"
-                    >
-                      {cat}
-                    </span>
-                  ))}
-                </div>
-
-                {/* 제목 */}
-                <h3 className="text-xl font-bold text-text-900 mb-2">
-                  {useCase.title}
-                </h3>
-
-                {/* 설명 */}
-                <p className="text-sm text-subtext-300 mb-4">
-                  {useCase.description}
-                </p>
-
-                {/* 추천 AI 조합 */}
-                <div className="mb-4">
-                  <p className="text-xs text-subtext-300 mb-2">사용 AI:</p>
-                  <div className="flex gap-2">
-                    {useCase.aiCombination.map((ai, idx) => (
+          {filteredUseCases.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {filteredUseCases.map((useCase) => (
+                <div
+                  key={useCase.id}
+                  className="border border-line-100 rounded-xl p-6 hover:shadow-lg transition-shadow flex flex-col"
+                >
+                  {/* 카테고리 태그 */}
+                  <div className="flex gap-2 mb-3">
+                    {useCase.category.map((cat, idx) => (
                       <span
                         key={idx}
-                        className="px-3 py-1 bg-purple-50 text-[#8200DB] text-xs rounded-full font-medium"
+                        className="px-3 py-1 bg-box-10 text-subtext-300 text-xs rounded-full"
                       >
-                        {ai}
+                        {cat}
                       </span>
                     ))}
                   </div>
-                </div>
 
-                {/* 프롬프트 예시 */}
-                <div className="mb-4">
-                  <p className="text-xs text-subtext-300 mb-1">프롬프트 예시</p>
-                  <p className="text-sm text-[#1E2939]">
-                    {useCase.promptExample}
+                  {/* 제목 */}
+                  <h3 className="text-xl font-bold text-text-900 mb-2">
+                    {useCase.title}
+                  </h3>
+
+                  {/* 설명 */}
+                  <p className="text-sm text-subtext-300 mb-4">
+                    {useCase.description}
                   </p>
-                </div>
 
-                {/* 버튼 */}
-                <button className="w-full py-3 bg-[#2B7FFF] text-white rounded-lg hover:opacity-90 transition-opacity">
-                  이 프롬프트로 비교하기
-                </button>
-              </div>
-            ))}
-          </div>
+                  {/* 추천 AI 조합 */}
+                  <div className="mb-4">
+                    <p className="text-xs text-subtext-300 mb-2">사용 AI:</p>
+                    <div className="flex gap-2 flex-wrap">
+                      {useCase.aiCombination.map((ai, idx) => (
+                        <span
+                          key={idx}
+                          className="px-3 py-1 bg-purple-50 text-[#8200DB] text-xs rounded-full font-medium"
+                        >
+                          {ai}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* 프롬프트 예시 */}
+                  <div className="mb-4">
+                    <p className="text-xs text-subtext-300 mb-1">프롬프트 예시</p>
+                    <p className="text-sm text-[#1E2939]">
+                      {useCase.promptExample}
+                    </p>
+                  </div>
+
+                  {/* 버튼 - mt-auto로 하단 고정 */}
+                  <button className="w-full py-3 bg-[#2B7FFF] text-white rounded-lg hover:opacity-90 transition-opacity mt-auto flex items-center justify-center gap-2">
+                    <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1.33496 8.66824C1.2088 8.66867 1.08511 8.6333 0.978258 8.56623C0.871406 8.49916 0.785778 8.40314 0.731322 8.28935C0.676866 8.17555 0.655818 8.04863 0.670622 7.92335C0.685426 7.79806 0.735476 7.67955 0.814956 7.58157L7.41496 0.781574C7.46446 0.724428 7.53193 0.685811 7.60628 0.672062C7.68063 0.658313 7.75744 0.670248 7.82411 0.70591C7.89078 0.741571 7.94335 0.798838 7.97318 0.868312C8.00301 0.937786 8.00834 1.01534 7.98829 1.08824L6.70829 5.10157C6.67055 5.20259 6.65787 5.31125 6.67135 5.41825C6.68483 5.52524 6.72406 5.62736 6.78568 5.71586C6.8473 5.80436 6.92947 5.87658 7.02514 5.92635C7.12081 5.97611 7.22712 6.00192 7.33496 6.00157H12.0016C12.1278 6.00114 12.2515 6.03652 12.3583 6.10359C12.4652 6.17066 12.5508 6.26667 12.6053 6.38047C12.6597 6.49427 12.6808 6.62118 12.666 6.74647C12.6512 6.87175 12.6011 6.99027 12.5216 7.08824L5.92162 13.8882C5.87211 13.9454 5.80465 13.984 5.7303 13.9978C5.65595 14.0115 5.57914 13.9996 5.51247 13.9639C5.4458 13.9282 5.39323 13.871 5.3634 13.8015C5.33357 13.732 5.32824 13.6545 5.34829 13.5816L6.62829 9.56824C6.66603 9.46723 6.67871 9.35856 6.66523 9.25157C6.65175 9.14458 6.61252 9.04245 6.5509 8.95396C6.48928 8.86546 6.40711 8.79323 6.31144 8.74347C6.21577 8.6937 6.10946 8.66789 6.00162 8.66824H1.33496Z" stroke="white" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    이 프롬프트로 비교하기
+                  </button>
+                </div>
+              ))}
+            </div>
+          ) : (
+            // 검색 결과 없을 때
+            <div className="text-center py-16">
+              <p className="text-subtext-300 text-lg mb-2">검색 결과가 없습니다</p>
+              <p className="text-subtext-300 text-sm">다른 검색어나 카테고리를 선택해보세요</p>
+            </div>
+          )}
         </div>
       </main>
 
