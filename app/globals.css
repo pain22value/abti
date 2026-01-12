@@ -3,15 +3,15 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  
+
   /* figma 등록 색상 */
-  --color-main-600: #5736F5;
+  --color-main-600: #5736f5;
   --color-background-0: #ffffff;
-  --color-box-10: #F9FAFB;
-  --color-line-100: #E0E0E0;
+  --color-box-10: #f9fafb;
+  --color-line-100: #e0e0e0;
   --color-subtext-300: #717182;
   --color-button-800: #030213;
-  --color-text-900: #0A0A0A;
+  --color-text-900: #0a0a0a;
 }
 
 @theme inline {
