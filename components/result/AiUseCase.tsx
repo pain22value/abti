@@ -9,7 +9,7 @@ export default function AiUseCase() {
         {/* 헤더 */}
         <div className="flex items-center justify-between gap-4">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">
+            <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
               관련 유스케이스
             </h1>
             <p className="mt-1 text-sm text-gray-500">
@@ -85,7 +85,7 @@ export default function AiUseCase() {
           <div className="rounded-2xl border border-violet-200/70 bg-white p-6 shadow-sm">
             <div className="flex items-start justify-between gap-3">
               <span className="rounded-full bg-gray-100 px-2 py-1 text-[11px] font-semibold text-gray-700">
-                SNS 콘텐츠
+                SNS 매니저
               </span>
               <span className="rounded-md bg-amber-50 px-2 py-1 text-[11px] font-semibold text-amber-700 ring-1 ring-amber-200">
                 중급
@@ -143,13 +143,18 @@ export default function AiUseCase() {
           <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3">
             {/* 후기 1 */}
             <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
-              <div className="flex items-center gap-2">
-                <div className="h-7 w-7 rounded-full bg-gray-200" />
-                <p className="text-sm font-semibold text-gray-900">
-                  김OO 마케터
-                </p>
+              <div className="flex items-center gap-3">
+                <div className=" h-10 w-10 rounded-full bg-gray-200" />
+                <div className="flex flex-col">
+                  <p className="text-sm font-semibold text-gray-900">
+                    김OO 마케터
+                  </p>
+                  <p className="text-sm font-medium text-gray-400">
+                    스타트업 3년차
+                  </p>
+                </div>
               </div>
-              <p className="mt-3 text-sm text-gray-600 leading-6">
+              <p className="mt-3 text-sm text-gray-800 leading-6">
                 “저는 초안은 뤼튼으로 잡고, 다듬는 건 Claude한테 시켜요. 뤼튼이
                 한국어 템플릿이 많아서 시작하기 편하더라고요.”
               </p>
@@ -157,13 +162,18 @@ export default function AiUseCase() {
 
             {/* 후기 2 */}
             <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
-              <div className="flex items-center gap-2">
-                <div className="h-7 w-7 rounded-full bg-gray-200" />
-                <p className="text-sm font-semibold text-gray-900">
-                  김OO 마케터
-                </p>
+              <div className="flex items-center gap-3">
+                <div className=" h-10 w-10 rounded-full bg-gray-200" />
+                <div className="flex flex-col">
+                  <p className="text-sm font-semibold text-gray-900">
+                    김OO 마케터
+                  </p>
+                  <p className="text-sm font-medium text-gray-400">
+                    스타트업 3년차
+                  </p>
+                </div>
               </div>
-              <p className="mt-3 text-sm text-gray-600 leading-6">
+              <p className="mt-3 text-sm text-gray-800 leading-6">
                 “긴 문서 정리는 Claude가 최고였고, 최종 산출물은 Notion AI로
                 깔끔하게 정리했어요.”
               </p>
@@ -171,13 +181,18 @@ export default function AiUseCase() {
 
             {/* 후기 3 */}
             <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
-              <div className="flex items-center gap-2">
-                <div className="h-7 w-7 rounded-full bg-gray-200" />
-                <p className="text-sm font-semibold text-gray-900">
-                  김OO 마케터
-                </p>
+              <div className="flex items-center gap-3">
+                <div className=" h-10 w-10 rounded-full bg-gray-200" />
+                <div className="flex flex-col">
+                  <p className="text-sm font-semibold text-gray-900">
+                    김OO 마케터
+                  </p>
+                  <p className="text-sm font-medium text-gray-400">
+                    스타트업 3년차
+                  </p>
+                </div>
               </div>
-              <p className="mt-3 text-sm text-gray-600 leading-6">
+              <p className="mt-3 text-sm text-gray-800 leading-6">
                 “캡션 A/B 테스트 문구 뽑고 바로 이미지까지 만들어서 캠페인
                 준비가 쉬웠어요.”
               </p>
