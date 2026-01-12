@@ -3,7 +3,7 @@ import Footer from '@/components/common/Footer';
 
 export default function UseCasesPage() {
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <main className="min-h-screen bg-white flex flex-col">
       <Header />
       {/* 여기서 밑 ~ */}
       <main className="flex-1">
@@ -14,6 +14,6 @@ export default function UseCasesPage() {
       </main>
       {/* 여기 사이까지 다 지우시고 작업하시면 됩니다!! */}
       <Footer />
-    </div>
+    </main>
   );
 }
