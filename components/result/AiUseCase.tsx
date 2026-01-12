@@ -174,7 +174,7 @@ export default function AiUseCase() {
                 </div>
               </div>
               <p className="mt-3 text-sm text-gray-800 leading-6">
-                “긴 문서 정리는 Claude가 최고였고, 최종 산출물은 Notion AI로
+                “긴 문서 정리는 Claude가 최고였고 최종 산출물은 Notion AI로
                 깔끔하게 정리했어요.”
               </p>
             </div>
