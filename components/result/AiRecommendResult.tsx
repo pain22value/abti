@@ -19,13 +19,13 @@ export default function AiRecommendResult() {
             </span>
             <p className="text-sm font-semibold text-gray-900">입력하신 조건</p>
           </div>
-          <p className="mt-3 text-sm text-gray-700">
+          <p className="mt-5 text-sm text-gray-700">
             신제품 런칭을 위한 SNS 콘텐츠
           </p>
         </div>
 
         {/* 조건 분석 결과 */}
-        <div className="mt-5 rounded-2xl border border-gray-200 bg-white shadow-sm">
+        <div className="mt-5 rounded-2xl border border-gray-200 bg-white">
           <div className="px-6 py-5">
             <div className="flex items-center gap-2">
               <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-100 text-emerald-700 text-[11px] font-bold">
@@ -41,7 +41,7 @@ export default function AiRecommendResult() {
 
             <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
               {/* 목적 */}
-              <div className="rounded-xl border border-gray-200 bg-gray-50/40 px-4 py-3">
+              <div className="rounded-xl bg-[#F9FAFB] px-4 py-3">
                 <div className="flex items-center justify-between">
                   <p className="text-xs font-medium text-gray-500">목적</p>
                   <span className="rounded-md bg-[#DCFCE7] px-2 py-1 text-[11px] font-medium text-[#008236] ">
@@ -54,7 +54,7 @@ export default function AiRecommendResult() {
               </div>
 
               {/* 출력 형식 */}
-              <div className="rounded-xl border border-gray-200 bg-gray-50/40 px-4 py-3">
+              <div className="rounded-xl bg-[#F9FAFB] px-4 py-3">
                 <div className="flex items-center justify-between">
                   <p className="text-xs font-medium text-gray-500">출력 형식</p>
                   <span className="rounded-md bg-[#DCFCE7] px-2 py-1 text-[11px] font-medium text-[#008236] ">
@@ -67,7 +67,7 @@ export default function AiRecommendResult() {
               </div>
 
               {/* 예산 */}
-              <div className="rounded-xl border border-gray-200 bg-gray-50/40 px-4 py-3">
+              <div className="rounded-xl bg-[#F9FAFB] px-4 py-3">
                 <div className="flex items-center justify-between">
                   <p className="text-xs font-medium text-gray-500">예산</p>
                   <span className="rounded-md bg-gray-100 px-2 py-1 text-[11px] font-medium text-gray-600">
@@ -80,7 +80,7 @@ export default function AiRecommendResult() {
               </div>
 
               {/* 팀 규모 */}
-              <div className="rounded-xl border border-gray-200 bg-gray-50/40 px-4 py-3">
+              <div className="rounded-xl bg-[#F9FAFB] px-4 py-3">
                 <div className="flex items-center justify-between">
                   <p className="text-xs font-medium text-gray-500">팀 규모</p>
                   <span className="rounded-md bg-gray-100 px-2 py-1 text-[11px] font-medium text-gray-600">

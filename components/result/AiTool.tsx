@@ -9,7 +9,9 @@ export default function AiTool() {
         {/* 헤더 라인 */}
         <div className="flex items-center justify-between gap-4 mx-auto max-w-6xl">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">추천 AI 도구</h1>
+            <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
+              추천 AI 도구
+            </h1>
             <p className="mt-1 text-sm text-gray-500">
               총 4개의 도구를 추천합니다.
             </p>
@@ -66,7 +68,7 @@ export default function AiTool() {
 
             <button
               type="button"
-              className="mt-auto pt-3 text-left text-xs font-semibold text-[#9810FA] hover:underline"
+              className="mt-auto pt-5 text-left text-xs font-semibold text-[#9810FA] hover:underline hover:cursor-pointer"
             >
               바로가기 &gt;
             </button>
@@ -109,7 +111,7 @@ export default function AiTool() {
 
             <button
               type="button"
-              className="mt-auto pt-3 text-left text-xs font-semibold text-[#9810FA] hover:underline"
+              className="mt-auto pt-3 text-left text-xs font-semibold text-[#9810FA] hover:underline  hover:cursor-pointer"
             >
               바로가기 &gt;
             </button>
@@ -149,7 +151,7 @@ export default function AiTool() {
 
             <button
               type="button"
-              className="mt-auto pt-3 text-left text-xs font-semibold text-[#9810FA] hover:underline"
+              className="mt-auto pt-3 text-left text-xs font-semibold text-[#9810FA] hover:underline  hover:cursor-pointer"
             >
               바로가기 &gt;
             </button>
@@ -192,7 +194,7 @@ export default function AiTool() {
 
             <button
               type="button"
-              className="mt-auto pt-3 text-left text-xs font-semibold text-[#9810FA] hover:underline"
+              className="mt-auto pt-3 text-left text-xs font-semibold text-[#9810FA] hover:underline hover:cursor-pointer"
             >
               바로가기 &gt;
             </button>
