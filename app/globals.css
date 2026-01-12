@@ -42,3 +42,132 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* 점선 원 회전 애니메이션 */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 90s linear infinite;
+}
+
+.animate-spin-reverse {
+  animation: spin-reverse 90s linear infinite;
+}
+
+/* 물방울 글로우 효과 */
+.glow-bubble-purple {
+  background: radial-gradient(circle at center, 
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 90%,
+    rgba(168, 85, 247, 0.5) 100%
+  );
+  box-shadow: 0 0 6px rgba(168, 85, 247, 0.5);
+}
+
+.glow-bubble-indigo {
+  background: radial-gradient(circle at center,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 90%,
+    rgba(99, 102, 241, 0.5) 100%
+  );
+  box-shadow: 0 0 6px rgba(99, 102, 241, 0.5);
+}
+
+.glow-bubble-pink {
+  background: radial-gradient(circle at center,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 90%,
+    rgba(236, 72, 153, 0.5) 100%
+  );
+  box-shadow: 0 0 6px rgba(236, 72, 153, 0.5);
+}
+
+/* 방울 떠다니는 애니메이션 */
+@keyframes float-bubble-1 {
+  0%, 100% {
+    transform: translate(0, 0);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(30px, -40px);
+    opacity: 0.8;
+  }
+}
+
+@keyframes float-bubble-2 {
+  0%, 100% {
+    transform: translate(0, 0);
+    opacity: 0.25;
+  }
+  50% {
+    transform: translate(-40px, 30px);
+    opacity: 0.7;
+  }
+}
+
+@keyframes float-bubble-3 {
+  0%, 100% {
+    transform: translate(0, 0);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translate(25px, 35px);
+    opacity: 0.6;
+  }
+}
+
+@keyframes float-bubble-4 {
+  0%, 100% {
+    transform: translate(0, 0);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translate(-30px, -25px);
+    opacity: 0.75;
+  }
+}
+
+@keyframes float-bubble-5 {
+  0%, 100% {
+    transform: translate(0, 0);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(45px, 20px);
+    opacity: 0.65;
+  }
+}
+
+@keyframes float-bubble-6 {
+  0%, 100% {
+    transform: translate(0, 0);
+    opacity: 0.28;
+  }
+  50% {
+    transform: translate(-35px, -30px);
+    opacity: 0.7;
+  }
+}
+
+.animate-float-bubble-1 { animation: float-bubble-1 8s ease-in-out infinite; }
+.animate-float-bubble-2 { animation: float-bubble-2 10s ease-in-out infinite; }
+.animate-float-bubble-3 { animation: float-bubble-3 12s ease-in-out infinite; }
+.animate-float-bubble-4 { animation: float-bubble-4 9s ease-in-out infinite; }
+.animate-float-bubble-5 { animation: float-bubble-5 11s ease-in-out infinite; }
+.animate-float-bubble-6 { animation: float-bubble-6 13s ease-in-out infinite; }
